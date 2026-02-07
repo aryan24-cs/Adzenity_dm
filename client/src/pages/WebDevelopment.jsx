@@ -90,6 +90,7 @@ const WebDevelopment = () => {
                 title="Websites That Convert"
                 subtitle="Website Development"
                 description="We build beautiful, high-performing websites that help your business grow and convert visitors into customers."
+                onOpenQuote={onOpenQuote}
                 stats={[
                     { value: '98%', label: 'Launch Rate' },
                     { value: '200+', label: 'Websites' },
