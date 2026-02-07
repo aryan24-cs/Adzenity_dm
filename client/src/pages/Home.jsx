@@ -3,7 +3,7 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
-const Home = () => {
+const Home = ({ onOpenQuote }) => {
     const services = [
         {
             title: 'Search Engine Optimization',
@@ -143,13 +143,12 @@ const Home = () => {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                         </svg>
                                     </a>
-                                    <a
-                                        href="#contact"
-                                        onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                                    <button
+                                        onClick={onOpenQuote}
                                         className="btn-outline cursor-pointer"
                                     >
                                         Get Free Quote
-                                    </a>
+                                    </button>
                                 </div>
                             </AnimateOnScroll>
                         </div>
@@ -314,7 +313,7 @@ const Home = () => {
                                     ))}
                                 </div>
 
-                                <Link to="/development" className="btn-primary inline-flex">
+                                <Link to="#" className="btn-primary inline-flex">
                                     Learn More About Us
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

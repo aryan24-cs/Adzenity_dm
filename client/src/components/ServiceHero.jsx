@@ -11,7 +11,8 @@ const ServiceHero = ({
         { value: '16+', label: 'Years Experience' },
         { value: '24/7', label: 'Support' }
     ],
-    badgeText = 'Join 200+ businesses'
+    badgeText = 'Join 200+ businesses',
+    onOpenQuote
 }) => {
     return (
         <section className="relative py-24 md:py-32 bg-primary overflow-hidden">
@@ -69,16 +70,15 @@ const ServiceHero = ({
 
                         <AnimateOnScroll animation="fade-in-up" delay={300}>
                             <div className="flex flex-wrap gap-4">
-                                <a
-                                    href="#contact"
-                                    onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                                <button
+                                    onClick={onOpenQuote}
                                     className="group bg-accent text-primary-dark px-8 py-4 rounded-full font-semibold transition-all hover:bg-white hover:shadow-lg hover:shadow-accent/20 flex items-center gap-2 cursor-pointer"
                                 >
                                     Get a Quote
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
-                                </a>
+                                </button>
                                 <a href="#services" className="group bg-white/5 text-white px-8 py-4 rounded-full font-semibold transition-all hover:bg-white/10 border border-white/20 backdrop-blur-sm flex items-center gap-2">
                                     Explore Services
                                     <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
