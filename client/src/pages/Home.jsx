@@ -42,10 +42,10 @@ const Home = () => {
     ];
 
     const stats = [
-        { number: '3k+', label: 'Successful Projects' },
-        { number: '200+', label: 'Expert Team Members' },
-        { number: '350+', label: 'Happy Customers' },
-        { number: '16+', label: 'Years Experience' },
+        { number: '500+', label: 'Successful Projects' },
+        { number: '50+', label: 'Expert Team Members' },
+        { number: '250+', label: 'Happy Customers' },
+        { number: '8+', label: 'Years Experience' },
     ];
 
     const aboutFeatures = [
@@ -296,7 +296,7 @@ const Home = () => {
                                     We're Your Partners in Digital Growth
                                 </h2>
                                 <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                                    With over 16 years of combined experience, we've helped hundreds of businesses transform their online presence. Our data-driven approach ensures every strategy delivers measurable results.
+                                    With over 8 years of experience, we've helped hundreds of businesses transform their online presence. Our data-driven approach ensures every strategy delivers measurable results.
                                 </p>
 
                                 {/* Feature Cards */}
@@ -344,7 +344,7 @@ const Home = () => {
                                             </svg>
                                         </div>
                                         <div>
-                                            <div className="text-2xl font-bold text-gray-900 font-display">99%</div>
+                                            <div className="text-2xl font-bold text-gray-900 font-display">95%</div>
                                             <div className="text-gray-500 text-sm">Client Satisfaction</div>
                                         </div>
                                     </div>

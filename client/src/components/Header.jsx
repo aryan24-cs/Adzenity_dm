@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
-const Header = () => {
+const Header = ({ onOpenQuote }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [logoError, setLogoError] = useState(false);
@@ -102,13 +102,12 @@ const Header = () => {
 
                     {/* CTA Button */}
                     <div className="hidden md:block">
-                        <a
-                            href="#contact"
-                            onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                        <button
+                            onClick={onOpenQuote}
                             className="btn-primary text-sm cursor-pointer"
                         >
                             Get A Quote
-                        </a>
+                        </button>
                     </div>
 
                     {/* Mobile Menu Button - Minimal & Premium */}
@@ -166,18 +165,16 @@ const Header = () => {
                         <div className={`w-full max-w-sm transform transition-all duration-500 ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
                             }`}
                             style={{ transitionDelay: `${navLinks.length * 100}ms` }}>
-                            <a
-                                href="#contact"
-                                onClick={(e) => {
-                                    e.preventDefault();
+                            <button
+                                onClick={() => {
                                     setIsMobileMenuOpen(false);
-                                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                                    onOpenQuote();
                                 }}
                                 className="flex items-center justify-center w-full py-6 bg-white text-[#1a4d2e] font-black text-xl rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:scale-[1.02] active:scale-95 transition-all duration-300 relative overflow-hidden group"
                             >
                                 <span className="relative z-10">GET STARTED</span>
                                 <div className="absolute inset-0 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

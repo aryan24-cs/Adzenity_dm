@@ -70,9 +70,9 @@ const AdsServices = () => {
     ];
 
     const results = [
-        { metric: '8.5x', label: 'Average ROAS', description: 'Return on ad spend' },
-        { metric: '-65%', label: 'Cost per Lead', description: 'Reduction achieved' },
-        { metric: '+300%', label: 'Monthly Leads', description: 'Increase for clients' },
+        { metric: '5.0x', label: 'Average ROAS', description: 'Return on ad spend' },
+        { metric: '-40%', label: 'Cost per Lead', description: 'Reduction achieved' },
+        { metric: '+150%', label: 'Monthly Leads', description: 'Increase for clients' },
     ];
 
     const faqs = [
@@ -88,6 +88,13 @@ const AdsServices = () => {
                 title="Scale with Paid Advertising"
                 subtitle="Google & Meta Ads"
                 description="Get your brand in front of the right audience at the right time with high-performing ad campaigns that deliver real ROI."
+                stats={[
+                    { value: '5.0x', label: 'Average ROAS' },
+                    { value: '100+', label: 'Campaigns' },
+                    { value: '6+', label: 'Years Experience' },
+                    { value: 'Dedicated', label: 'Manager' }
+                ]}
+                badgeText="Join 50+ businesses"
             />
 
             {/* Results Banner */}

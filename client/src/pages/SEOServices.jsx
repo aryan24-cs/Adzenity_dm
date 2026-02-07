@@ -71,9 +71,9 @@ const SEOServices = () => {
     ];
 
     const results = [
-        { metric: '+245%', label: 'Organic Traffic', description: 'Average increase for clients' },
+        { metric: '+150%', label: 'Organic Traffic', description: 'Average increase for clients' },
         { metric: '#1', label: 'Rankings', description: 'For competitive keywords' },
-        { metric: '+180%', label: 'Lead Generation', description: 'From organic search' },
+        { metric: '+120%', label: 'Lead Generation', description: 'From organic search' },
     ];
 
     const faqs = [
@@ -89,6 +89,13 @@ const SEOServices = () => {
                 title="Dominate Search Results"
                 subtitle="SEO Services"
                 description="Drive sustainable organic traffic and grow your business with data-driven SEO strategies that deliver lasting results."
+                stats={[
+                    { value: '94%', label: 'Success Rate' },
+                    { value: '150+', label: 'Happy Clients' },
+                    { value: '5+', label: 'Years Experience' },
+                    { value: '24/7', label: 'Expert Support' }
+                ]}
+                badgeText="Join 100+ businesses"
             />
 
             {/* Results Banner */}

@@ -70,9 +70,9 @@ const WebDevelopment = () => {
     ];
 
     const results = [
-        { metric: '+150%', label: 'Conversion Rate', description: 'Average improvement' },
+        { metric: '+80%', label: 'Conversion Rate', description: 'Average improvement' },
         { metric: '<1s', label: 'Load Time', description: 'Blazing fast sites' },
-        { metric: '99%', label: 'Client Satisfaction', description: 'Happy customers' },
+        { metric: '95%', label: 'Client Satisfaction', description: 'Happy customers' },
     ];
 
     const technologies = ['React', 'Next.js', 'WordPress', 'Shopify', 'Node.js', 'Tailwind CSS'];
@@ -90,6 +90,13 @@ const WebDevelopment = () => {
                 title="Websites That Convert"
                 subtitle="Website Development"
                 description="We build beautiful, high-performing websites that help your business grow and convert visitors into customers."
+                stats={[
+                    { value: '98%', label: 'Launch Rate' },
+                    { value: '200+', label: 'Websites' },
+                    { value: '8+', label: 'Years Experience' },
+                    { value: 'Lifetime', label: 'Support' }
+                ]}
+                badgeText="Join 150+ businesses"
             />
 
             {/* Results Banner */}

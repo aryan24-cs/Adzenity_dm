@@ -1,6 +1,18 @@
 import AnimateOnScroll from './AnimateOnScroll';
 
-const ServiceHero = ({ title, subtitle, description, variant = 'default' }) => {
+const ServiceHero = ({
+    title,
+    subtitle,
+    description,
+    variant = 'default',
+    stats = [
+        { value: '98%', label: 'Success Rate' },
+        { value: '350+', label: 'Happy Clients' },
+        { value: '16+', label: 'Years Experience' },
+        { value: '24/7', label: 'Support' }
+    ],
+    badgeText = 'Join 200+ businesses'
+}) => {
     return (
         <section className="relative py-24 md:py-32 bg-primary overflow-hidden">
             {/* Unique Background Design */}
@@ -88,22 +100,12 @@ const ServiceHero = ({ title, subtitle, description, variant = 'default' }) => {
                             <div className="relative bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
                                 {/* Stats Grid */}
                                 <div className="grid grid-cols-2 gap-6">
-                                    <div className="bg-white/10 rounded-2xl p-6 text-center">
-                                        <div className="text-3xl font-bold text-accent font-display mb-1">98%</div>
-                                        <div className="text-white/60 text-sm">Success Rate</div>
-                                    </div>
-                                    <div className="bg-white/10 rounded-2xl p-6 text-center">
-                                        <div className="text-3xl font-bold text-accent font-display mb-1">350+</div>
-                                        <div className="text-white/60 text-sm">Happy Clients</div>
-                                    </div>
-                                    <div className="bg-white/10 rounded-2xl p-6 text-center">
-                                        <div className="text-3xl font-bold text-accent font-display mb-1">16+</div>
-                                        <div className="text-white/60 text-sm">Years Experience</div>
-                                    </div>
-                                    <div className="bg-white/10 rounded-2xl p-6 text-center">
-                                        <div className="text-3xl font-bold text-accent font-display mb-1">24/7</div>
-                                        <div className="text-white/60 text-sm">Support</div>
-                                    </div>
+                                    {stats.map((stat, idx) => (
+                                        <div key={idx} className="bg-white/10 rounded-2xl p-6 text-center">
+                                            <div className="text-3xl font-bold text-accent font-display mb-1">{stat.value}</div>
+                                            <div className="text-white/60 text-sm">{stat.label}</div>
+                                        </div>
+                                    ))}
                                 </div>
 
                                 {/* Bottom Badge */}
@@ -113,7 +115,7 @@ const ServiceHero = ({ title, subtitle, description, variant = 'default' }) => {
                                         <div className="w-8 h-8 bg-primary-dark rounded-full border-2 border-white/20 flex items-center justify-center text-xs font-bold text-white">B</div>
                                         <div className="w-8 h-8 bg-white/30 rounded-full border-2 border-white/20 flex items-center justify-center text-xs font-bold text-white">+</div>
                                     </div>
-                                    <span className="text-sm">Join 200+ businesses</span>
+                                    <span className="text-sm">{badgeText}</span>
                                 </div>
                             </div>
 
