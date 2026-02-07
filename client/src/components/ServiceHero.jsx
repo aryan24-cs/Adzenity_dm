@@ -70,8 +70,9 @@ const ServiceHero = ({
 
                         <AnimateOnScroll animation="fade-in-up" delay={300}>
                             <div className="flex flex-wrap gap-4">
-                                <button
-                                    onClick={onOpenQuote}
+                                <a
+                                    href="#contact"
+                                    onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
                                     className="group bg-accent text-primary-dark px-8 py-4 rounded-full font-semibold transition-all hover:bg-white hover:shadow-lg hover:shadow-accent/20 flex items-center gap-2 cursor-pointer"
                                 >
                                     Get a Quote

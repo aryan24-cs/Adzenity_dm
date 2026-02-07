@@ -96,6 +96,7 @@ const SEOServices = ({ onOpenQuote }) => {
                     { value: '24/7', label: 'Expert Support' }
                 ]}
                 badgeText="Join 100+ businesses"
+                onOpenQuote={onOpenQuote}
             />
 
             {/* Results Banner */}

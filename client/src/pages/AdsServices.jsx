@@ -95,6 +95,7 @@ const AdsServices = ({ onOpenQuote }) => {
                     { value: 'Dedicated', label: 'Manager' }
                 ]}
                 badgeText="Join 50+ businesses"
+                onOpenQuote={onOpenQuote}
             />
 
             {/* Results Banner */}
