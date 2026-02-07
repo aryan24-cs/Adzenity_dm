@@ -17,23 +17,42 @@ const ContactForm = ({ variant = 'full', title = 'Get In Touch', subtitle = "Rea
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus('submitting');
 
-        // Simulate API call
-        setTimeout(() => {
-            setStatus('success');
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                website: '',
-                service: 'seo',
-                message: '',
+        try {
+            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+            const response = await fetch(`${apiUrl}/send-email`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
-            setTimeout(() => setStatus('idle'), 5000);
-        }, 1500);
+
+            const result = await response.json();
+
+            if (result.success) {
+                setStatus('success');
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    website: '',
+                    service: 'seo',
+                    message: '',
+                });
+                setTimeout(() => setStatus('idle'), 5000);
+            } else {
+                setStatus('error');
+                alert('Failed to send message: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('error');
+            alert('An error occurred. Please try again later.');
+        }
     };
 
     return (
