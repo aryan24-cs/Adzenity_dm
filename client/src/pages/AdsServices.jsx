@@ -4,7 +4,7 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
-const AdsServices = () => {
+const AdsServices = ({ onOpenQuote }) => {
     const features = [
         {
             title: 'Google Search Ads',
@@ -95,6 +95,7 @@ const AdsServices = () => {
                     { value: 'Dedicated', label: 'Manager' }
                 ]}
                 badgeText="Join 50+ businesses"
+                onOpenQuote={onOpenQuote}
             />
 
             {/* Results Banner */}

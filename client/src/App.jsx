@@ -20,9 +20,9 @@ function App() {
                 <main>
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/seo" element={<SEOServices />} />
-                        <Route path="/ads" element={<AdsServices />} />
-                        <Route path="/development" element={<WebDevelopment />} />
+                        <Route path="/seo" element={<SEOServices onOpenQuote={() => setIsQuoteModalOpen(true)} />} />
+                        <Route path="/ads" element={<AdsServices onOpenQuote={() => setIsQuoteModalOpen(true)} />} />
+                        <Route path="/development" element={<WebDevelopment onOpenQuote={() => setIsQuoteModalOpen(true)} />} />
                     </Routes>
                 </main>
                 <Footer />

@@ -4,7 +4,7 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
-const WebDevelopment = () => {
+const WebDevelopment = ({ onOpenQuote }) => {
     const features = [
         {
             title: 'Custom Web Design',
@@ -97,6 +97,7 @@ const WebDevelopment = () => {
                     { value: 'Lifetime', label: 'Support' }
                 ]}
                 badgeText="Join 150+ businesses"
+                onOpenQuote={onOpenQuote}
             />
 
             {/* Results Banner */}

@@ -11,7 +11,8 @@ const ServiceHero = ({
         { value: '16+', label: 'Years Experience' },
         { value: '24/7', label: 'Support' }
     ],
-    badgeText = 'Join 200+ businesses'
+    badgeText = 'Join 200+ businesses',
+    onOpenQuote
 }) => {
     return (
         <section className="relative py-24 md:py-32 bg-primary overflow-hidden">
@@ -71,7 +72,14 @@ const ServiceHero = ({
                             <div className="flex flex-wrap gap-4">
                                 <a
                                     href="#contact"
-                                    onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        if (onOpenQuote) {
+                                            onOpenQuote();
+                                        } else {
+                                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }}
                                     className="group bg-accent text-primary-dark px-8 py-4 rounded-full font-semibold transition-all hover:bg-white hover:shadow-lg hover:shadow-accent/20 flex items-center gap-2 cursor-pointer"
                                 >
                                     Get a Quote
