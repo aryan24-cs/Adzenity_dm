@@ -4,7 +4,7 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
-const AdsServices = () => {
+const AdsServices = ({ onOpenQuote }) => {
     const features = [
         {
             title: 'Google Search Ads',

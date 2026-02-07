@@ -4,7 +4,7 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
-const WebDevelopment = () => {
+const WebDevelopment = ({ onOpenQuote }) => {
     const features = [
         {
             title: 'Custom Web Design',
