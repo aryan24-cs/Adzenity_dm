@@ -59,7 +59,8 @@ app.post('/send-email', async (req, res) => {
         const { subject, text, html } = generateEmailTemplate({ name, email, phone, website, service, message });
 
         const mailOptions = {
-            from: email,
+            from: process.env.EMAIL_USER, // SENDER MUST BE THE AUTHENTICATED USER
+            replyTo: email, // User's email goes here so you can reply to them
             to: process.env.EMAIL_USER,
             subject: subject,
             text: text,
