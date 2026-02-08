@@ -10,6 +10,15 @@ const generateEmailTemplate = require('./emailTemplates');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// --- ENVIRONMENT VARIABLE VALIDATION ---
+const requiredEnvVars = ['EMAIL_USER', 'EMAIL_PASS', 'MONGODB_URI'];
+const missingEnvVars = requiredEnvVars.filter(key => !process.env[key]);
+
+if (missingEnvVars.length > 0) {
+    console.error(`FATAL ERROR: Missing required environment variables: ${missingEnvVars.join(', ')}`);
+    // Ideally, we might exit here, but on Vercel it's better to log and let it fail gracefully or retry
+}
+
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/adzenity';
 mongoose.connect(MONGODB_URI)
@@ -31,9 +40,10 @@ const Inquiry = mongoose.model('Inquiry', inquirySchema);
 
 // Middleware
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
-    methods: ['POST', 'GET'],
-    credentials: true
+    origin: process.env.CLIENT_URL || '*', // Allow all origins if CLIENT_URL is not set (debug mode)
+    methods: ['POST', 'GET', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
@@ -46,16 +56,34 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+// Verify Transporter Connection on Startup
+transporter.verify(function (error, success) {
+    if (error) {
+        console.error('Nodemailer Connection Error:', error);
+    } else {
+        console.log('Server is ready to take our messages');
+    }
+});
+
 // Email Route
 app.post('/send-email', async (req, res) => {
+    console.log('Received inquiry request:', req.body); // Log request body (be careful with PII in production, but needed for debugging)
     const { name, email, phone, website, service, message } = req.body;
+
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        console.error('Server misconfiguration: EMAIL_USER or EMAIL_PASS is missing.');
+        return res.status(500).json({ success: false, message: 'Server misconfiguration.' });
+    }
 
     try {
         // 1. Save to Database
+        console.log('Saving inquiry to database...');
         const newInquiry = new Inquiry({ name, email, phone, website, service, message });
         await newInquiry.save();
+        console.log('Inquiry saved successfully.');
 
         // 2. Send Immediate Email Notification
+        console.log('Generating email template...');
         const { subject, text, html } = generateEmailTemplate({ name, email, phone, website, service, message });
 
         const mailOptions = {
@@ -67,16 +95,19 @@ app.post('/send-email', async (req, res) => {
             html: html,
         };
 
+        console.log('Sending email...');
         await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully.');
         res.status(200).json({ success: true, message: 'Inquiry received and email sent!' });
     } catch (error) {
-        console.error('Error handling inquiry:', error);
-        res.status(500).json({ success: false, message: 'Failed to process inquiry.' });
+        console.error('CRITICAL ERROR in /send-email:', error);
+        // Send actual error message for debugging (remove in strict production if needed)
+        res.status(500).json({ success: false, message: 'Failed to process inquiry.', error: error.message });
     }
 });
 
-// Daily Report Cron Job (Every day at 5:00 PM)
-// Pattern: '0 17 * * *'
+// Daily Report Cron Job (Every day at 6:00 PM)
+// Pattern: '0 18 * * *'
 cron.schedule('0 18 * * *', async () => {
     console.log('Generating daily inquiry report...');
 
