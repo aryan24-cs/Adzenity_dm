@@ -47,7 +47,7 @@ const ContactForm = ({ variant = 'full', title = 'Get In Touch', subtitle = "Rea
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
                 setStatus('error');
-                alert('Failed to send message: ' + result.message);
+                alert('Failed to send message: ' + result.message + (result.error ? '\nDetails: ' + result.error : ''));
             }
         } catch (error) {
             console.error('Error submitting form:', error);
