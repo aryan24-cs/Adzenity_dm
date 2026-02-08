@@ -98,7 +98,6 @@ const WebDevelopment = ({ onOpenQuote }) => {
                     { value: 'Lifetime', label: 'Support' }
                 ]}
                 badgeText="Join 150+ businesses"
-                onOpenQuote={onOpenQuote}
             />
 
             {/* Results Banner */}

@@ -65,7 +65,7 @@ const ContactForm = ({ variant = 'full', title = 'Get In Touch', subtitle = "Rea
                     <div className={`text-center ${isModal ? 'mb-6' : 'mb-12'}`}>
                         <AnimateOnScroll animation="fade-in-up">
                             {!isModal && <span className="section-tag justify-center mb-4">Contact Us</span>}
-                            <h2 className={`${isModal ? 'text-2xl pt-8' : 'text-3xl md:text-4xl'} font-bold text-gray-900 font-display mb-2`}>
+                            <h2 className={`${isModal ? 'text-2xl md:text-3xl pt-8' : 'text-3xl md:text-4xl'} font-bold text-gray-900 font-display mb-2`}>
                                 {title}
                             </h2>
                             <p className={`text-gray-600 ${isModal ? 'text-sm' : 'text-lg'}`}>
@@ -75,7 +75,7 @@ const ContactForm = ({ variant = 'full', title = 'Get In Touch', subtitle = "Rea
                     </div>
 
                     <AnimateOnScroll animation="fade-in-up" delay={100}>
-                        <div className={`${isModal ? 'p-6 pb-12 shadow-none border-none' : 'bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100'}`}>
+                        <div className={`${isModal ? 'p-6 md:p-8 pb-12 shadow-none border-none' : 'bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100'}`}>
                             {status === 'success' ? (
                                 <div className="text-center py-8">
                                     <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
