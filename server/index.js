@@ -76,7 +76,7 @@ app.post('/send-email', async (req, res) => {
 
 // Daily Report Cron Job (Every day at 5:00 PM)
 // Pattern: '0 17 * * *'
-cron.schedule('0 17 * * *', async () => {
+cron.schedule('0 18 * * *', async () => {
     console.log('Generating daily inquiry report...');
 
     try {
