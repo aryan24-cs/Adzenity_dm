@@ -19,11 +19,24 @@ if (missingEnvVars.length > 0) {
     // Ideally, we might exit here, but on Vercel it's better to log and let it fail gracefully or retry
 }
 
-// MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/adzenity';
-mongoose.connect(MONGODB_URI)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('MongoDB connection error:', err));
+// MongoDB Connection Utility
+let isConnected = false; // Track connection status
+
+const connectDB = async () => {
+    if (isConnected) {
+        return;
+    }
+
+    try {
+        const db = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/adzenity');
+        isConnected = db.connections[0].readyState;
+        console.log('MongoDB Connected successfully');
+    } catch (error) {
+        console.error('MongoDB connection error:', error);
+        // Don't exit process in serverless, just throw
+        throw error;
+    }
+};
 
 // Inquiry Schema
 const inquirySchema = new mongoose.Schema({
@@ -76,6 +89,9 @@ app.post('/send-email', async (req, res) => {
     }
 
     try {
+        // 0. Connect to Database (ensure connection is ready)
+        await connectDB();
+
         // 1. Save to Database
         console.log('Saving inquiry to database...');
         const newInquiry = new Inquiry({ name, email, phone, website, service, message });
