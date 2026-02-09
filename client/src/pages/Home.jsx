@@ -3,6 +3,8 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
+import SEO from '../components/SEO';
+
 const Home = ({ onOpenQuote }) => {
     const services = [
         {
@@ -105,6 +107,10 @@ const Home = ({ onOpenQuote }) => {
 
     return (
         <div className="overflow-hidden">
+            <SEO 
+                title="Digital Marketing Agency" 
+                description="Scale your business with Adzenity. Expert SEO, Google Ads, Meta Ads, and Web Development services driven by data and results." 
+            />
             {/* Hero Section */}
             <section className="relative bg-mint py-16 md:py-24 overflow-hidden">
                 <div className="absolute top-20 left-10 w-3 h-3 bg-accent rounded-full animate-float"></div>

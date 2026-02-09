@@ -4,6 +4,8 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
+import SEO from '../components/SEO';
+
 const AdsServices = ({ onOpenQuote }) => {
     const features = [
         {
@@ -84,6 +86,10 @@ const AdsServices = ({ onOpenQuote }) => {
 
     return (
         <div className="overflow-hidden">
+            <SEO 
+                title="PPC Management - Google & Facebook Ads" 
+                description="Maximize your ROAS with expert PPC management. We run high-converting campaigns on Google Ads, Facebook, and Instagram." 
+            />
             <ServiceHero
                 title="Scale with Paid Advertising"
                 subtitle="Google & Meta Ads"

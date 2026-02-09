@@ -4,6 +4,8 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
+import SEO from '../components/SEO';
+
 const WebDevelopment = ({ onOpenQuote }) => {
     const features = [
         {
@@ -86,6 +88,10 @@ const WebDevelopment = ({ onOpenQuote }) => {
 
     return (
         <div className="overflow-hidden">
+            <SEO 
+                title="Web Development Services | Custom Websites" 
+                description="Build a high-performance website that converts. Custom web design and development services using React, Next.js, and WordPress." 
+            />
             <ServiceHero
                 title="Websites That Convert"
                 subtitle="Website Development"

@@ -4,6 +4,8 @@ import AnimateOnScroll from '../components/AnimateOnScroll';
 import ContactForm from '../components/ContactForm';
 import FAQ from '../components/FAQ';
 
+import SEO from '../components/SEO';
+
 const SEOServices = ({ onOpenQuote }) => {
     const features = [
         {
@@ -85,6 +87,10 @@ const SEOServices = ({ onOpenQuote }) => {
 
     return (
         <div className="overflow-hidden">
+            <SEO 
+                title="SEO Services - Rank #1 on Google" 
+                description="Dominate search results with Adzenity's data-driven SEO services. Keyword research, on-page optimization, and high-quality link building." 
+            />
             <ServiceHero
                 title="Dominate Search Results"
                 subtitle="SEO Services"
