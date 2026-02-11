@@ -11,12 +11,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // --- ENVIRONMENT VARIABLE VALIDATION ---
-const requiredEnvVars = ['EMAIL_USER', 'EMAIL_PASS', 'MONGODB_URI'];
+const requiredEnvVars = ['EMAIL_USER', 'EMAIL_PASS'];
 const missingEnvVars = requiredEnvVars.filter(key => !process.env[key]);
+
+if (!process.env.MONGODB_URI && !process.env.MONGO_URI) {
+    missingEnvVars.push('MONGODB_URI (or MONGO_URI)');
+}
 
 if (missingEnvVars.length > 0) {
     console.error(`FATAL ERROR: Missing required environment variables: ${missingEnvVars.join(', ')}`);
-    // Ideally, we might exit here, but on Vercel it's better to log and let it fail gracefully or retry
 }
 
 // MongoDB Connection Utility
@@ -184,4 +187,8 @@ cron.schedule('0 18 * * *', async () => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    // Connect to database on startup
+    connectDB().catch(err => {
+        console.error('Failed to connect to MongoDB on startup:', err);
+    });
 });
